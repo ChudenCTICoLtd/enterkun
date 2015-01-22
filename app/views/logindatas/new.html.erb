@@ -4,13 +4,13 @@
  
   <table border="1">
       <tr>
-        <th><%= f.label "協会営業所" %></th>
+        <th><%= f.label "営業所" %></th>
         <td>
 		<%= f.select :whoami_kyoukaicode, @eigyosyos.map{|eigyosyo| [eigyosyo.kyoukaicode+' '+eigyosyo.kyoukaimei, eigyosyo.kyoukaicode]},:selected => params[:kyoukaicode] %>
 		</td>
       </tr>
     <tr>
-      <th><%= f.label "調査員" %></th>
+      <th><%= f.label "フィールド担当者" %></th>
       <td> 
 		  <%= f.select :whoami_id, @chosains.map{|chosain| [chosain.namecode+' '+chosain.name, chosain.id]} %></td>
 		  
@@ -20,7 +20,7 @@
 
     <tr>
       <th><%= f.label "当年" %></th>
-      <td><%= f.select :when_year, {"2009年" => "2009","2010年" => "2010","2011年" => "2011","2012年" => "2012","2013年" => "2013", "2014年" => "2014", "2015年" => "2015"},:selected => "2014" %></td>
+      <td><%= f.select :when_year, {"2009年" => "2009","2010年" => "2010","2011年" => "2011","2012年" => "2012","2013年" => "2013", "2014年" => "2014", "2015年" => "2015"},:selected => "2015" %></td>
     </tr>
     <tr>
       <th><%= f.label "当月" %></th>
@@ -29,7 +29,7 @@
                   "4月" =>  "04",  "5月" =>  "05",  "6月" =>  "06",
                   "7月" =>  "07",  "8月" =>  "08",  "9月" =>  "09",
                  "10月" => "10", "11月" => "11", "12月" => "12"
-                  } , :selected => "11"%></td>
+                  } , :selected => "1"%></td>
     </tr>
   </table>
 <br />

@@ -42,9 +42,7 @@
 			<% if session[:whoami_id].blank? %>
 　	　		  <li><%= link_to "ログイン", signin_path, method: "get" %></li>
             <%else%>
-            <li><a href="/kofus"><span class="glyphicon glyphicon-user"></span> 交付一覧</a></li>
-			<li><a href="/naisenchosahyou/index"><span class="glyphicon glyphicon-book"></span> 内線調査完了報告書</a></li>
-            <li><a href="/zetsufudaichos"><span class="glyphicon glyphicon-fire"></span> 絶縁不良管理台帳</a></li>
+            <li><a href="/kofus"><span class="glyphicon glyphicon-user"></span>訪問対象一覧</a></li>
 			<li><%= link_to "ログアウト", signout_path, method: "delete" %></li>
             <%end%>
           </ul>

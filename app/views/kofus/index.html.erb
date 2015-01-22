@@ -1,7 +1,7 @@
 <%- model_class = Kofu -%>
 <div class="page-header">
   <h3><%=t '.title', :default => "お客さま選択画面" %></h3>
-  <h4>調査員の今月の交付件数：<%= @kofus.count %>件</h4>
+  <h4>あなたの今月の訪問件数：<%= @kofus.count %>件</h4>
 </div>
 
 <a class="btn" data-toggle="modal" href="#show_kensaku" role="button">
@@ -22,23 +22,23 @@
 		  <%= f.select :newest_chosajisseki_code_cont, options_from_collection_for_select(ChosajissekiCode.all, :id, :atai),:include_blank => true %>
 		 </div>
 		 <div class="form-group">
-		  <%= f.label :chosain_name_cont, '調査員名',:class => "col-sm-3 control-label" %>
+		  <%= f.label :chosain_name_cont, '担当者名',:class => "col-sm-3 control-label" %>
 		  <%= f.text_field :chosain_name_cont %>
 		 </div>
 		 <div class="form-group"> 
-		  <%= f.label :keiyaku_kanriku_code_cont, '管理区' ,:class => "col-sm-3 control-label"%>
+		  <%= f.label :keiyaku_kanriku_code_cont, '管轄エリア' ,:class => "col-sm-3 control-label"%>
 		  <%= f.select :keiyaku_kanriku_code_cont,@kanrikus ,:include_blank => true%>
 		 </div>
 		 <div class="form-group">
-		  <%= f.label :keiyaku_hashira_bango_cont, '柱番号',:class => "col-sm-3 control-label" %>
+		  <%= f.label :keiyaku_hashira_bango_cont, '訪問番号',:class => "col-sm-3 control-label" %>
 		    <%= f.select :keiyaku_hashira_bango_cont,@hashiras ,:include_blank => true%>
 		 </div>
 		 <div class="form-group">
-		  <%= f.label :keiyaku_okyaku_code_cont, 'お客さま番号' ,:class => "col-sm-3 control-label"%>
+		  <%= f.label :keiyaku_okyaku_code_cont, 'お客さま設備番号' ,:class => "col-sm-3 control-label"%>
 		  <%= f.text_field :keiyaku_okyaku_code_cont %>
 		</div>
 		<div class="form-group">
-		  <%= f.label :keiyaku_okyaku_name_cont, 'お客さま名',:class => "col-sm-3 control-label" %>
+		  <%= f.label :keiyaku_okyaku_name_cont, 'お客さま名（設備管理者名）',:class => "col-sm-3 control-label" %>
 		  <%= f.text_field :keiyaku_okyaku_name_cont %>
   
 		 </div>
@@ -61,11 +61,11 @@
   <thead>
     <tr>
 	  <th>交種別</th>
-	  <th>管区</th>
-	  <th>柱</th>
+	  <th>管轄エリア</th>
+	  <th>訪番</th>
 	  <th>客番</th>
 	  <th>客名</th>
-	  <th>灯力街</th>
+	  <th>施設区分</th>
 	  <th>実績</th>
       <th>操作</th>
     </tr>
