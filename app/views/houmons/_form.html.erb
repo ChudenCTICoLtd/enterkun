@@ -1,0 +1,42 @@
+<%= form_for(@houmon) do |f| %>
+  <% if @houmon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@houmon.errors.count, "error") %> prohibited this houmon from being saved:</h2>
+
+      <ul>
+      <% @houmon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "訪問年月日" %><br>
+    <%= f.datetime_select :houmon_ymd %>
+  </div>
+  <div class="field">
+    <%= f.label "訪問回数" %><br>
+    <%= f.text_field :houmon_su %>
+  </div>
+  <div class="field">
+    <%= f.label "天候コード" %><br>
+    <%= f.text_field :tenki %>
+  </div>
+  <div class="field">
+    <%= f.label "在宅状態" %><br>
+    <%= f.text_field :zaitaku_jotai %>
+  </div>
+  <div class="field">
+    <%= f.label "交付ID" %><br>
+    <%= f.text_field :kofu_id %>
+  </div>
+  <div class="field">
+    <%= f.label "現場写真" %><br>
+    <%= f.file_field :picture  %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

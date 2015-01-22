@@ -1,0 +1,21 @@
+    <div class="container theme-showcase">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h3><span class="glyphicon glyphicon-phone"></span>ちょーたくん</h3>
+        <h4>端末のコストダウンを実現し、</h4>
+        <h4>入力操作の更なる効率化がはかれる、</h4>
+        <h4>調査員向けの業務システム「ちょーたくん」です。</h4>
+        <h4>従来端末と比べ、コストダウン・能率アップをはかることはもちろん、</h4>
+        <h4>専用機を用意する必要がない、端末に依存しないシステムです。</h4>
+		
+
+        <p>
+			<% if session[:whoami_id].blank? %>
+			<a href="/signin" class="btn btn-primary btn-lg">
+			<% else %>
+			<a href="/kofus" class="btn btn-primary btn-lg">
+		    <% end %>
+				早速使ってみる <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+      </div>
+  </div>

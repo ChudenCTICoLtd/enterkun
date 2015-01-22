@@ -1,0 +1,30 @@
+<h1>訪問履歴</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>訪問日</th>
+      <th>訪問回数</th>
+
+      <th>在宅状態</th>
+	  <th>現場写真</th>
+      <tr>
+  </thead>
+
+  <tbody>
+    <% @houmons.each do |houmon| %>
+      <tr>
+        <td><%= houmon.houmon_ymd %></td>
+        <td><%= houmon.houmon_su %></td>
+
+		<td><%= houmon.zaitaku_jotai %></td>
+		<td><%= image_tag(houmon.picture_url, width: 600) if houmon.picture.present? %>
+
+
+
+			
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

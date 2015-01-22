@@ -1,0 +1,21 @@
+<%= form_for(@riyu_monshin) do |f| %>
+  <% if @riyu_monshin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@riyu_monshin.errors.count, "error") %> prohibited this riyu_monshin from being saved:</h2>
+
+      <ul>
+      <% @riyu_monshin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :atai %><br>
+    <%= f.text_field :atai %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<%= form_for(@tenkenkekka) do |f| %>
+  <% if @tenkenkekka.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tenkenkekka.errors.count, "error") %> prohibited this tenkenkekka from being saved:</h2>
+
+      <ul>
+      <% @tenkenkekka.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "調査結果" %><br>
+    <%= f.text_field :chosakekka_code %>
+  </div>
+  <div class="field">
+    <%= f.label "調査実績" %><br>
+    <%= f.text_field :chosajisseki_code %>
+  </div>
+  <div class="field">
+    <%= f.label "訪問ID" %><br>
+    <%= f.number_field :houmon_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

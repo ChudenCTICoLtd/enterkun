@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+<h1>訪問</h1>
+<p>
+  <strong>訪問年月日</strong>
+  <%= @houmon.houmon_ymd %>
+</p>
+<p>
+  <strong>訪問回数</strong>
+  <%= @houmon.houmon_su %>
+</p>
+
+<p>
+  <strong>天候</strong>
+  <%= @houmon.tenko.atai %>
+</p>
+
+<p>
+  <strong>在宅状態</strong>
+  <%= @houmon.zaitakufuzai.atai %>
+</p>
+
+<hr>
+<h2>点検結果</h2>
+
+<hr>
+<p>
+  <strong>調査結果</strong>
+  
+  <% if @houmon.tenkenkekka.chosakekka.id == 1 %>
+  <span class="label label-success">
+ <span class="glyphicon glyphicon-ok-circle"></span>
+     <%= @houmon.tenkenkekka.chosakekka.atai %>
+	 </span>
+  <%else%>
+     <span class="label label-danger">
+    <span class="glyphicon glyphicon-warning-sign"></span>
+        <%= @houmon.tenkenkekka.chosakekka.atai %>
+   	 </span>
+  <%end%>
+ 
+
+</p>
+<strong>現場写真</strong>
+<%= image_tag(@houmon.picture_url, width: '100%') if @houmon.picture.present? %>
+
+<p>
+  <strong>調査実績</strong>
+  <%= @houmon.tenkenkekka.chosajisseki.atai %>
+
+</p>
+<hr>
+<h2>訪問した場所</h2>
+    <div id="map" style='width: 100%;height:200px;'></div>
+
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {draggable: false,panControl: false,streetViewControl: false}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+	  handler.getMap().setZoom(18);
+    });
+</script>
+

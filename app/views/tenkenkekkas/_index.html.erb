@@ -1,0 +1,34 @@
+<h1>Listing tenkenkekkas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Chosakekka code</th>
+      <th>Chosajisseki code</th>
+      <th>Houmon</th>
+      <th>Monshin kekka</th>
+      <th>Okugai kekka</th>
+      <th>Okunai kekka</th>
+      <th>Sokuteichi kekka</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tenkenkekkas.each do |tenkenkekka| %>
+      <tr>
+        <td><%= tenkenkekka.chosakekka_code %></td>
+        <td><%= tenkenkekka.chosajisseki_code %></td>
+        <td><%= tenkenkekka.houmon_id %></td>
+
+        <td><%= link_to 'Show', tenkenkekka %></td>
+        <td><%= link_to 'Edit', edit_tenkenkekka_path(tenkenkekka) %></td>
+        <td><%= link_to 'Destroy', tenkenkekka, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tenkenkekka', new_tenkenkekka_path %>

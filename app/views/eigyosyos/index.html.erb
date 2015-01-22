@@ -1,0 +1,27 @@
+<h1>Listing eigyosyos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kyoukaicode</th>
+      <th>Kyoukaimei</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @eigyosyos.each do |eigyosyo| %>
+      <tr>
+        <td><%= eigyosyo.kyoukaicode %></td>
+        <td><%= eigyosyo.kyoukaimei %></td>
+        <td><%= link_to 'Show', eigyosyo %></td>
+        <td><%= link_to 'Edit', edit_eigyosyo_path(eigyosyo) %></td>
+        <td><%= link_to 'Destroy', eigyosyo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eigyosyo', new_eigyosyo_path %>

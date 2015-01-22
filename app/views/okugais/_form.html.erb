@@ -1,0 +1,34 @@
+<%= form_for(@okugai) do |f| %>
+  <% if @okugai.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@okugai.errors.count, "error") %> prohibited this okugai from being saved:</h2>
+
+      <ul>
+      <% @okugai.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "取付部絶縁良否" %><br>
+    <% @toritsukes = JyoutaiUmufukanou.all %>  
+    <% for @toritsuke in @toritsukes %>
+    <label><%= f.radio_button :toritsukezetsuen_ryohifuno, @toritsuke.id %><%= @toritsuke.atai %></label>
+    <% end %>
+	
+    
+  </div>
+  <div class="field">
+    <%= f.label "他物との離隔良否" %><br>
+    <% @tabutsurikakus = JyoutaiUmufukanou.all %>  
+    <% for @tabutsurikaku in @tabutsurikakus %>
+    <label><%= f.radio_button :tabutsurikaku_ryohifuno, @tabutsurikaku.id %><%= @tabutsurikaku.atai %></label>
+    <% end %>
+	
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

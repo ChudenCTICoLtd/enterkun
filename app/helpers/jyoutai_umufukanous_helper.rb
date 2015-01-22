@@ -1,0 +1,2 @@
+module JyoutaiUmufukanousHelper
+end

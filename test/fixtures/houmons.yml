@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  houmon_ymd: 2014-07-17 14:53:12
+  houmon_su: MyString
+  tenki: MyString
+  zaitaku_jotai: MyString
+  kofu_id: MyString
+
+two:
+  houmon_ymd: 2014-07-17 14:53:12
+  houmon_su: MyString
+  tenki: MyString
+  zaitaku_jotai: MyString
+  kofu_id: MyString

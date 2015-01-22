@@ -1,0 +1,62 @@
+<%- model_class = Keiyaku -%>
+<div class="page-header">
+  <h1>手動交付</h1>
+</div>
+
+<%= form_tag action='create_kofus' do %>
+  <table class="table table-squere">
+  <tr>
+    <td>調査員</td>
+    <td><%= text_field :chosa, :chosain %></td>
+  </tr>
+  <tr>
+    <td>交付種別</td>
+    <td><%= text_field :chosa, :kofushubetsu %></td>
+    <td>調査種類</td>
+    <td><%= text_field :chosa, :chosasyurui %></td>
+    <td>集合コード</td>
+    <td><%= text_field :chosa, :shugo %></td>
+  </tr>
+</table>
+
+
+<%= paginate(@keiyakus)%>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>交付</th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:okyaku_code) %></th>
+      <th><%= model_class.human_attribute_name(:chosa_kubn) %></th>
+      <th><%= model_class.human_attribute_name(:kanriku_code) %></th>
+      <th><%= model_class.human_attribute_name(:hashira_bango) %></th>
+      <th><%= model_class.human_attribute_name(:okyaku_name) %></th>
+      <th><%= model_class.human_attribute_name(:keiyakushubetsu_code) %></th>
+      <th><%= model_class.human_attribute_name(:torikigai_code) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% @keiyakus.each do |keiyaku| %>
+      <tr>
+        <td>
+          <%= check_box 'check', keiyaku.id, :id => "keiyakus_#{keiyaku.id}" %>
+        </td>
+        <td><%= link_to keiyaku.id, "/keiyakus/#{keiyaku.id}" %></td>
+        <td><%= keiyaku.okyaku_code %></td>
+        <td><%= keiyaku.chosa_kubn %></td>
+        <td><%= keiyaku.kanriku_code %></td>
+        <td><%= keiyaku.hashira_bango %></td>
+        <td><%= keiyaku.okyaku_name %></td>
+        <td><%= keiyaku.keiyakushubetsu_code %></td>
+        <td><%= keiyaku.torikigai_code %></td>
+        <td><%=l keiyaku.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= submit_tag('交付します') %>
+<% end %>
+<br/>

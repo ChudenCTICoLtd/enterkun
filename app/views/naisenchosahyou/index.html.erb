@@ -1,0 +1,82 @@
+<table border=1>
+<caption>
+<strong>内線調査完了報告書</strong>
+</caption>
+<thead>
+<tr><th></th><th>電灯</th><th>電力</th><th>特定業種</th><th>再新</th><th>管理区変更</th><th>計</th></tr>
+</thead>
+<tbody>
+	
+	<tr><th>調査交付数(A)</th>
+		<td><%=@a[:dentou] %></td>
+		<td><%=@a[:denryoku] %></td>
+		<td><%=@a[:tokutei] %></td>
+		<td><%=@a[:saishin] %></td>
+		<td><%=@a[:kanhen] %></td>
+		<td><%=@a[:syoukei] %></td>
+	</tr>
+	
+	
+	<tr><th>前月残数(B)</th>
+		<td><%=@b[:dentou] %></td>
+		<td><%=@b[:denryoku] %></td>
+		<td><%=@b[:tokutei] %></td>
+		<td><%=@b[:saishin] %></td>
+		<td><%=@b[:kanhen] %></td>
+		<td><%=@b[:syoukei] %></td>
+	</tr>
+	
+	
+	<tr><th>当月調査対象数(C=A+B)</th>
+		<td><%=@c[:dentou] %></td>
+		<td><%=@c[:denryoku] %></td>
+		<td><%=@c[:tokutei] %></td>
+		<td><%=@c[:saishin] %></td>
+		<td><%=@c[:kanhen] %></td>
+		<td><%=@c[:syoukei] %></td>
+	</tr>
+
+
+	<tr><th>内線調査表による調査実施数(E)</th>
+		<td><%=@e[:dentou] %></td>
+		<td><%=@e[:denryoku] %></td>
+		<td><%=@e[:tokutei] %></td>
+		<td><%=@e[:saishin] %></td>
+		<td><%=@e[:kanhen] %></td>
+		<td><%=@e[:syoukei] %></td>
+	</tr>
+
+
+	<tr><th>漏れ電流計測定数(J)</th>
+		<td><%=@j[:dentou] %></td>
+		<td><%=@j[:denryoku] %></td>
+		<td><%=@j[:tokutei] %></td>
+		<td><%=@j[:saishin] %></td>
+		<td><%=@j[:kanhen] %></td>
+		<td><%=@j[:syoukei] %></td>
+	</tr>
+
+
+	<tr><th>計(M=E+J)</th>
+		<td><%=@m[:dentou] %></td>
+		<td><%=@m[:denryoku] %></td>
+		<td><%=@m[:tokutei] %></td>
+		<td><%=@m[:saishin] %></td>
+		<td><%=@m[:kanhen] %></td>
+		<td><%=@m[:syoukei] %></td>
+	</tr>
+
+
+	<tr><th>調査未済数【当月残】(C-M)</th>
+		<td><%=@zan[:dentou] %></td>
+		<td><%=@zan[:denryoku] %></td>
+		<td><%=@zan[:tokutei] %></td>
+		<td><%=@zan[:saishin] %></td>
+		<td><%=@zan[:kanhen] %></td>
+		<td><%=@zan[:syoukei] %></td>
+	</tr>
+
+
+	</tbody>
+</table>
+

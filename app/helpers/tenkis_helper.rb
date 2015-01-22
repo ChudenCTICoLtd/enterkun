@@ -1,0 +1,2 @@
+module TenkisHelper
+end

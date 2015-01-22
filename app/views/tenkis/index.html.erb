@@ -1,0 +1,25 @@
+<h1>Listing tenkis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Atai</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tenkis.each do |tenki| %>
+      <tr>
+        <td><%= tenki.atai %></td>
+        <td><%= link_to 'Show', tenki %></td>
+        <td><%= link_to 'Edit', edit_tenki_path(tenki) %></td>
+        <td><%= link_to 'Destroy', tenki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tenki', new_tenki_path %>

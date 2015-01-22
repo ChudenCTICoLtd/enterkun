@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>屋内点検　実施有無</strong>
+  <%= @okunai.okunai_jisshi_umu.atai %>
+</p>
+
+<p>
+  <strong>屋内点検　未実施理由</strong>
+  <% if @okunai.mijisshi_riyu == " " %>
+  (理由なし)
+  <%else%>
+  <%= @okunai.mijisshiriyu.atai%>
+  <%end%>
+</p>
+
+<p>
+  <strong>分電盤破損有無</strong>
+  <%= @okunai.bundenbanhason.atai %>
+</p>
+
+<p>
+  <strong>充電部露出有無</strong>
+  <%= @okunai.juudenburosyutsu.atai %>
+</p>
+
+<%= link_to 'Edit', edit_okunai_path(@okunai) %> |
+<%= link_to 'Back', okunais_path %>

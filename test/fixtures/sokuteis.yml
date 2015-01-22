@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kairo_su: 1
+  roueidenryu_ikkatsu: 1.5
+  zetsuenteikou_ikkatsu: 1.5
+
+two:
+  kairo_su: 1
+  roueidenryu_ikkatsu: 1.5
+  zetsuenteikou_ikkatsu: 1.5

@@ -1,0 +1,286 @@
+<%- model_class = Kofu -%>
+
+<script type="text/javascript">
+  if (navigator.geolocation) {
+
+    // 現在の位置情報を取得
+    navigator.geolocation.getCurrentPosition(
+
+      // （1）位置情報の取得に成功した場合
+      function (pos) {
+        var lat = pos.coords.latitude;
+        var lng = pos.coords.longitude;
+
+        document.getElementById("houmon_lat").value = lat;
+        document.getElementById("houmon_lng").value = lng;
+        
+        },
+
+      // （2）位置情報の取得に失敗した場合
+      function (error) {
+        var message = "";
+
+        switch (error.code) {
+
+          // 位置情報が取得できない場合
+          case error.POSITION_UNAVAILABLE:
+            message = "a. 位置情報の取得ができませんでした。";
+            break;
+
+          // Geolocationの使用が許可されない場合
+          case error.PERMISSION_DENIED:
+            message = "b. 位置情報取得の使用許可がされませんでした。";
+            break;
+
+          // タイムアウトした場合
+          case error.PERMISSION_DENIED_TIMEOUT:
+            message = "c. 位置情報取得中にタイムアウトしました。";
+            break;
+        }
+        window.alert(message);
+      }
+    );
+  } else {
+    window.alert("d.本ブラウザではGeolocationが使えません");
+  }
+</script>
+
+<div class="page-header">
+  <h3>点検開始</h3>
+</div>
+<a class="btn" data-toggle="modal" href="#show_info" role="button">
+   <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-info-sign"></span> 基本情報</button>
+</a>
+
+<div id="show_info" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">基本情報</h4>
+      </div>
+      <div class="modal-body">
+        <p><dl class="dl-horizontal">  
+  
+  <dt><strong>交付種別</strong></dt>
+  <dd><strong><%= @kofu.kofushubetsu_code %></strong></dd>
+  <dt><strong>調査員名</strong></dt>
+  <dd><strong><%= @kofu.chosain.name %></strong></dd>
+  <dt><strong>管理区</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.kanriku_code %></strong></dd>
+  <dt><strong>柱番号</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.hashira_bango %></strong></dd>
+  <dt><strong>お客さま番号</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.okyaku_code %></strong></dd>
+  <dt><strong>お客さま名</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.okyaku_name %></strong></dd>
+  <dt><strong>契約種別</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.keiyakushubetsu_code %></strong></dd>
+  <dt><strong>灯力街</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.torikigai_code %></strong></dd>
+  <dt><strong>調査種類</strong></dt>
+  <dd><strong><%= @kofu.chosasyurui_code %></strong></dd>
+  <dt><strong>集合住宅コード</strong></dt>
+  <dd><strong><%= @kofu.shugo_code %></strong></dd>
+  
+  
+</dl></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-arrow-left"></span> 戻る</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="btn" data-toggle="modal" href="#show_rireki" role="button">
+   <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-info-sign"></span> 訪問履歴</button>
+</a>
+
+<div id="show_rireki" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <%= render 'houmons/index'%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-arrow-left"></span> 戻る</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+<%= form_for(@houmon) do |f_houmon| %> 
+<% if @houmon.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@houmon.errors.count, "error") %> prohibited this houmon from being saved:</h2>
+<ul>
+<% @houmon.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#houmon" data-toggle="tab">訪問</a></li>
+  <li class=""><a href="#monshin" data-toggle="tab">問診</a></li>
+  <li class=""><a href="#okugai" data-toggle="tab">屋外</a></li>
+  <li class=""><a href="#okunai" data-toggle="tab">屋内</a></li>
+  <li class=""><a href="#sokutei" data-toggle="tab">測定</a></li>
+</ul>
+
+
+<div id="myTabContent" class="tab-content">  
+  <div class="tab-pane fade active in" id="houmon">
+    <div class="field">
+    <%= f_houmon.label "訪問年月日" %><br>
+	<%= f_houmon.datetime_select :houmon_ymd %>
+	  
+	  
+	  
+    </div>
+    <div class="field">
+    <%= f_houmon.label "訪問回数" %><br>
+    <%= f_houmon.text_field :houmon_su , :readonly => true %>
+    </div>
+    <div class="field">
+    <%= f_houmon.label "天候コード" %><br>
+    <% @tenkis = Tenki.all %>  
+    <% for @tenki in @tenkis %>
+    <label><%= f_houmon.radio_button :tenki, @tenki.id, :checked=> true %><%= @tenki.atai %></label>
+    <% end %>
+	
+    </div>
+    <div class="field">
+    <%= f_houmon.label "在宅状態" %><br>
+    <% @zaitakus = Zaitaku.all %>  
+    <% for @zaitaku in @zaitakus %>
+    <label><%= f_houmon.radio_button :zaitaku_jotai, @zaitaku.id, :checked=> true %><%= @zaitaku.atai %></label>
+    <% end %>
+    </div>
+	
+    <div class="field">
+    <%= f_houmon.label "現場写真" %><br>
+    <%= f_houmon.file_field :picture %>
+    </div>
+
+	
+    <%= f_houmon.hidden_field :kofu_id %>
+  </div> 
+  <%= f_houmon.fields_for :tenkenkekka do |f_tenkenkekka| %>
+  <%= f_tenkenkekka.hidden_field :chosakekka_code %>
+  <%= f_tenkenkekka.hidden_field :chosajisseki_code %>
+  <%= f_tenkenkekka.hidden_field :houmon_id %>
+
+  <div class="tab-pane fade" id="monshin">
+	<%= f_tenkenkekka.fields_for :monshin do |f_monshin| %>
+    <div class="field">
+	<%= f_monshin.label "問診実施　有無" %><br>
+	<% @jisshiumus = JyoutaiUmu.all %>  
+	<% for @jisshiumu in @jisshiumus %>
+	<label><%= f_monshin.radio_button :jisshi_umu, @jisshiumu.id %><%= @jisshiumu.atai %></label>
+    <% end %>
+	<br>
+    </div>
+    <div class="field">
+	<%= f_monshin.label "未実施理由" %><br>
+	<%= f_monshin.collection_select :mijisshi_riyu, RiyuMonshin.all, :id, :atai ,:include_blank => true %>
+    </div>
+	<div class="field">
+	<%= f_monshin.label "物に触れてビリビリするところがある" %><br>
+	<% @mononifurebiribiris = JyoutaiUmumijisshi.all %>  
+	<% for @mononifurebiribiri in @mononifurebiribiris %>
+	<label><%= f_monshin.radio_button :mononifurebiribiri_umumi, @mononifurebiribiri.id %><%= @mononifurebiribiri.atai %></label>
+	<% end %>
+	</div>
+	<div class="field">
+	<%= f_monshin.label "増改築を行った" %><br>
+	<% @zokaichikus = JyoutaiUmumijisshi.all %>  
+	<% for @zokaichiku in @zokaichikus %>
+	<label><%= f_monshin.radio_button :zoukaichiku_umumi, @zokaichiku.id %><%= @zokaichiku.atai %></label>
+	<% end %>
+	</div>
+    <% end %>
+  </div>
+
+  <div class="tab-pane fade" id="okugai">
+    <%= f_tenkenkekka.fields_for :okugai do |f_okugai| %>
+    <div class="field">
+	<%= f_okugai.label "取付部絶縁良否" %><br>
+	<% @toritsukes = JyoutaiUmufukanou.all %>  
+	<% for @toritsuke in @toritsukes %>
+	<label><%= f_okugai.radio_button :toritsukezetsuen_ryohifuno, @toritsuke.id %><%= @toritsuke.atai %></label>
+	<% end %>
+	</div>
+	<div class="field">
+	<%= f_okugai.label "他物との離隔良否" %><br>
+	<% @tabutsurikakus = JyoutaiUmufukanou.all %>  
+	<% for @tabutsurikaku in @tabutsurikakus %>
+	<label><%= f_okugai.radio_button :tabutsurikaku_ryohifuno, @tabutsurikaku.id %><%= @tabutsurikaku.atai %></label>
+	<% end %>
+	</div>
+     <% end %>
+  </div>
+
+  <div class="tab-pane fade" id="okunai">
+	<%= f_tenkenkekka.fields_for :okunai do |f_okunai| %>
+	<div class="field">
+	<%= f_okunai.label "屋内点検実施有無" %><br>
+	<% @jisshiumus = JyoutaiUmu.all %>  
+	<% for @jisshiumu in @jisshiumus %>
+	<label><%= f_okunai.radio_button :jisshi_umu, @jisshiumu.id %><%= @jisshiumu.atai %></label>
+	<% end %>
+	</div>
+	<div class="field">
+	<%= f_okunai.label "屋内点検未実施理由" %><br>
+	<%= f_okunai.collection_select :mijisshi_riyu, RiyuOkunai.all, :id, :atai ,:include_blank => true %>
+	</div>
+	<div class="field">
+	<%= f_okunai.label "分電盤破損有無" %><br>
+	<% @bundenbanhasons = JyoutaiUmu.all %>  
+	<% for @bundenbanhason in @bundenbanhasons %>
+	<label><%= f_okunai.radio_button :bundenbanhason_umu, @bundenbanhason.id %><%= @bundenbanhason.atai %></label>
+	<% end %>
+	</div>
+	<div class="field">
+	<%= f_okunai.label "充電部露出有無" %><br>
+	<% @juudenburosyutsus = JyoutaiUmu.all %>  
+	<% for @juudenburosyutsu in @juudenburosyutsus %>
+	<label><%= f_okunai.radio_button :juudenburosyutsu_umu, @juudenburosyutsu.id %><%= @juudenburosyutsu.atai %></label>
+	<% end %>
+	</div>
+    <% end %>
+  </div>
+
+  <div class="tab-pane fade" id="sokutei">
+	<%= f_tenkenkekka.fields_for :sokutei do |f_sokutei| %>
+    <div class="field">
+	<%= f_sokutei.label "回路数" %><br>
+	<%= f_sokutei.number_field :kairo_su ,in: 1..99, step: 1 %>
+	</div>
+	<div class="field">
+	<%= f_sokutei.label "漏洩電流一括値" %><br>
+	<%= f_sokutei.number_field :roueidenryu_ikkatsu,in: 0.00..20.00, step: 0.01 %>mA
+	</div>
+	<div class="field">
+	<%= f_sokutei.label "絶縁抵抗一括値" %><br>
+	<%= f_sokutei.number_field :zetsuenteikou_ikkatsu,in: 0.00..20.00, step: 0.01  %>MΩ
+	</div>
+    <% end %>
+ 
+  <% end %>
+  <%= f_houmon.hidden_field :lat, :value => :lat %>
+  <%= f_houmon.hidden_field :lng, :value => :lng %>
+  <br>
+  <div class="actions">
+    <%= f_houmon.submit "点検結果登録" , :class => 'btn btn-primary btn-sm'  %>
+  </div>
+  </div>
+</div>
+
+<% end %>
+
+

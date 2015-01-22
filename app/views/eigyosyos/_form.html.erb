@@ -1,0 +1,25 @@
+<%= form_for(@eigyosyo) do |f| %>
+  <% if @eigyosyo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@eigyosyo.errors.count, "error") %> prohibited this eigyosyo from being saved:</h2>
+
+      <ul>
+      <% @eigyosyo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :kyoukaicode %><br>
+    <%= f.text_field :kyoukaicode %>
+  </div>
+  <div class="field">
+    <%= f.label :kyoukaimei %><br>
+    <%= f.text_field :kyoukaimei %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

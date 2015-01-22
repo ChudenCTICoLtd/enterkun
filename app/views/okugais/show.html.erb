@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>取付部絶縁良否</strong>
+  <%= @okugai.toritsukezetsuen.atai %>
+</p>
+
+<p>
+  <strong>他物との離隔良否</strong>
+  <%= @okugai.tabutsurikaku.atai %>
+</p>
+
+<%= link_to 'Edit', edit_okugai_path(@okugai) %> |
+<%= link_to 'Back', okugais_path %>

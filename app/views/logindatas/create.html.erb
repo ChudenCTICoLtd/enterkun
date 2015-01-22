@@ -1,0 +1,9 @@
+<h1>ログイン済</h1>
+
+<p>協会営業所コード：<%= session[:whoami_kyoukaicode] %></p>
+<p>調査員ID：<%= session[:whoami_id] %></p>
+<p>当年：<%= session[:when_year] %>年</p>
+<p>当月：<%= session[:when_month] %>月</p>
+
+<%= link_to "ログアウト", signout_path, method: "delete" %>
+ 

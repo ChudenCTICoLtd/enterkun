@@ -1,0 +1,29 @@
+<%= form_for(@sokutei) do |f| %>
+  <% if @sokutei.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sokutei.errors.count, "error") %> prohibited this sokutei from being saved:</h2>
+
+      <ul>
+      <% @sokutei.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "回路数" %><br>
+    <%= f.number_field :kairo_su %>
+  </div>
+  <div class="field">
+    <%= f.label "漏洩電流一括値" %><br>
+    <%= f.text_field :roueidenryu_ikkatsu %>mA
+  </div>
+  <div class="field">
+    <%= f.label "絶縁抵抗一括値" %><br>
+    <%= f.text_field :zetsuenteikou_ikkatsu %>MΩ
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

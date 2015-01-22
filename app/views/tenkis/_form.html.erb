@@ -1,0 +1,21 @@
+<%= form_for(@tenki) do |f| %>
+  <% if @tenki.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tenki.errors.count, "error") %> prohibited this tenki from being saved:</h2>
+
+      <ul>
+      <% @tenki.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :atai %><br>
+    <%= f.text_field :atai %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

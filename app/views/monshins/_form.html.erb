@@ -1,0 +1,52 @@
+<%= form_for(@monshin) do |f| %>
+  <% if @monshin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@monshin.errors.count, "error") %> prohibited this monshin from being saved:</h2>
+
+      <ul>
+      <% @monshin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	  <%= f.label "問診実施　有無" %><br>
+	 
+	  
+	     <% @jisshiumus = JyoutaiUmu.all %>  
+	     <% for @jisshiumu in @jisshiumus %>
+	     <label><%= f.radio_button :jisshi_umu, @jisshiumu.id %><%= @jisshiumu.atai %></label>
+	     <% end %>
+	  
+    <br>
+    
+  </div>
+  <div class="field">
+    <%= f.label "未実施理由" %><br>
+	<%= f.collection_select :mijisshi_riyu, RiyuMonshin.all, :id, :atai %>
+  </div>
+  <div class="field">
+    <%= f.label "物に触れてビリビリするところがある" %><br>
+    <% @mononifurebiribiris = JyoutaiUmumijisshi.all %>  
+    <% for @mononifurebiribiri in @mononifurebiribiris %>
+    <label><%= f.radio_button :mononifurebiribiri_umumi, @mononifurebiribiri.id %><%= @mononifurebiribiri.atai %></label>
+    <% end %>
+		
+
+  </div>
+  <div class="field">
+    <%= f.label "増改築を行った" %><br>
+	
+    <% @zokaichikus = JyoutaiUmumijisshi.all %>  
+    <% for @zokaichiku in @zokaichikus %>
+    <label><%= f.radio_button :zoukaichiku_umumi, @zokaichiku.id %><%= @zokaichiku.atai %></label>
+    <% end %>
+		
+	
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

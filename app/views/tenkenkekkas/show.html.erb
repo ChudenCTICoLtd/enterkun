@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Chosakekka code:</strong>
+  <%= @tenkenkekka.chosakekka_code %>
+</p>
+
+<p>
+  <strong>Chosajisseki code:</strong>
+  <%= @tenkenkekka.chosajisseki_code %>
+</p>
+
+<p>
+  <strong>Houmon:</strong>
+  <%= @tenkenkekka.houmon_id %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_tenkenkekka_path(@tenkenkekka) %> |
+<%= link_to 'Back', tenkenkekkas_path %>

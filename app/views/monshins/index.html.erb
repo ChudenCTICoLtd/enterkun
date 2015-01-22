@@ -1,0 +1,31 @@
+<h1>問診</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>問診実施　有無</th>
+      <th>未実施理由</th>
+      <th>物に触れてビリビリするところがある</th>
+      <th>増改築を行った</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @monshins.each do |monshin| %>
+      <tr>
+        <td><%= monshin.jisshi_umu %></td>
+        <td><%= monshin.mijisshi_riyu %></td>
+        <td><%= monshin.mononifurebiribiri_umumi %></td>
+        <td><%= monshin.zoukaichiku_umumi %></td>
+        <td><%= link_to 'Show', monshin %></td>
+        <td><%= link_to 'Edit', edit_monshin_path(monshin) %></td>
+        <td><%= link_to 'Destroy', monshin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Monshin', new_monshin_path %>

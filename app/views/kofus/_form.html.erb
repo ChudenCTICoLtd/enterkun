@@ -1,0 +1,38 @@
+<%= form_for @kofu, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :kofushubetsu_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :kofushubetsu_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :chosain_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :chosain_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :keiyaku_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :keiyaku_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :chosasyurui_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :chosasyurui_code, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :shugo_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :shugo_code, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                kofus_path, :class => 'btn' %>
+  </div>
+<% end %>

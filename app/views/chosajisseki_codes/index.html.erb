@@ -1,0 +1,27 @@
+<h1>Listing chosajisseki_codes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Atai</th>
+	  <th>Kigou</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chosajisseki_codes.each do |chosajisseki_code| %>
+      <tr>
+        <td><%= chosajisseki_code.atai %></td>
+		<td><%= chosajisseki_code.kigou %></td>
+        <td><%= link_to 'Show', chosajisseki_code %></td>
+        <td><%= link_to 'Edit', edit_chosajisseki_code_path(chosajisseki_code) %></td>
+        <td><%= link_to 'Destroy', chosajisseki_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chosajisseki code', new_chosajisseki_code_path %>

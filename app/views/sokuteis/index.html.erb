@@ -1,0 +1,29 @@
+<h1>Listing sokuteis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kairo su</th>
+      <th>Roueidenryu ikkatsu</th>
+      <th>Zetsuenteikou ikkatsu</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sokuteis.each do |sokutei| %>
+      <tr>
+        <td><%= sokutei.kairo_su %></td>
+        <td><%= sokutei.roueidenryu_ikkatsu %></td>
+        <td><%= sokutei.zetsuenteikou_ikkatsu %></td>
+        <td><%= link_to 'Show', sokutei %></td>
+        <td><%= link_to 'Edit', edit_sokutei_path(sokutei) %></td>
+        <td><%= link_to 'Destroy', sokutei, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sokutei', new_sokutei_path %>

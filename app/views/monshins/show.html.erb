@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>問診実施　有無</strong>
+  <%= @monshin.monshin_jisshi_umu.atai %>
+</p>
+
+<p>
+  <strong>未実施理由</strong>
+  <%= @monshin.mijisshiriyu_list.atai %>
+</p>
+
+<p>
+  <strong>物に触れてビリビリするところがある</strong>
+  <%= @monshin.mononifurebiribiri_umumijisshi.atai %>
+</p>
+
+<p>
+  <strong>増改築を行った</strong>
+  <%= @monshin.zokaichiku_umumijisshi.atai %>
+</p>
+
+<%= link_to 'Edit', edit_monshin_path(@monshin) %> |
+<%= link_to 'Back', monshins_path %>

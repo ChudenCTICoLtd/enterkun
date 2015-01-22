@@ -1,0 +1,127 @@
+<%- model_class = Kofu -%>
+<div class="page-header">
+  <h1>訪問履歴</h1>
+</div>
+
+<a class="btn" data-toggle="modal" href="#show_info" role="button">
+   <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span> お客さま基本情報</button>
+</a>
+
+<div id="show_info" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">お客さま基本情報</h4>
+      </div>
+      <div class="modal-body">
+        <p><dl class="dl-horizontal">  
+  
+  <dt><strong>交付種別</strong></dt>
+  <dd><strong><%= @kofu.kofushubetsu_code %></strong></dd>
+  <dt><strong>調査員名</strong></dt>
+  <dd><strong><%= @kofu.chosain.name %></strong></dd>
+  <dt><strong>管理区</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.kanriku_code %></strong></dd>
+  <dt><strong>柱番号</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.hashira_bango %></strong></dd>
+  <dt><strong>お客さま番号</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.okyaku_code %></strong></dd>
+  <dt><strong>お客さま名</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.okyaku_name %></strong></dd>
+  <dt><strong>契約種別</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.keiyakushubetsu_code %></strong></dd>
+  <dt><strong>灯力街</strong></dt>
+  <dd><strong><%= @kofu.keiyaku.torikigai_code %></strong></dd>
+  <dt><strong>調査種類</strong></dt>
+  <dd><strong><%= @kofu.chosasyurui_code %></strong></dd>
+  <dt><strong>集合住宅コード</strong></dt>
+  <dd><strong><%= @kofu.shugo_code %></strong></dd>
+  
+  
+</dl></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-arrow-left"></span> 戻る</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<table>
+    
+	  <th><strong>訪問年月日</strong></th>
+	  <th><strong>訪問回数</strong></th>
+	  <th><strong>天候</strong></th>
+	  <th><strong>在宅状態</strong></th>
+	  <th><strong>調査結果</strong></th>
+	  <th><strong>現場写真</strong></th>
+	  <th><strong>調査実績</strong></th>
+	  
+
+    <% @houmons.each do |houmon| %>
+
+	  <tr>
+        <td><%= houmon.houmon_ymd %></td>
+        <td><%= houmon.houmon_su %></td>
+		<td><%= houmon.tenko.atai %></td>
+		<td><%= houmon.zaitakufuzai.atai %></td>
+		<td>
+		 <% if houmon.tenkenkekka.chosakekka_code == " " %>
+		 (初回不在)
+		 <% else %>	
+   		  <% if houmon.tenkenkekka.chosakekka.id == 1 %>
+   		  <span class="label label-success">
+   		 <span class="glyphicon glyphicon-ok-circle"></span>
+   		     <%= houmon.tenkenkekka.chosakekka.atai %>
+   			 </span>
+   		  <%else%>
+   		     <span class="label label-danger">
+   		    <span class="glyphicon glyphicon-warning-sign"></span>
+   		        <%= houmon.tenkenkekka.chosakekka.atai %>
+   		   	 </span>
+   		  <%end%>
+		  <%end%>
+		</td>
+		<td>
+			<a data-toggle="modal" href="#show_picture<%= houmon.id %>" role="button">
+			<%= image_tag(houmon.picture_url, width: 60) if houmon.picture.present? %>
+			</a>
+	  	  <div id="show_picture<%= houmon.id %>" class="modal">
+	  	    <div class="modal-dialog">
+	  	      <div class="modal-content">
+	  	        <div class="modal-header">
+	  	          <h4 class="modal-title">現場写真</h4>
+	  	        </div>
+	  	        <div class="modal-body">
+	  	         
+	  	          	<%= image_tag(houmon.picture_url, width: '100%' ) if houmon.picture.present? %>
+	  	          
+	  	        </div>
+	  	        <div class="modal-footer">
+	  	          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-arrow-left"></span> 戻る</button>
+	  	        </div>
+	  	      </div>
+	  	    </div>
+	  	  </div>
+			
+        </td>
+		<td>
+		<%if houmon.tenkenkekka.chosajisseki_code == " " %>
+		(初回不在)
+		<%else%>
+			<%= houmon.tenkenkekka.chosajisseki.atai %>
+		<%end%>
+		</td>
+      </tr>
+	  
+
+	  
+	  
+	  
+	  
+	  
+	  
+    <% end %>
+</table>
+<hr>

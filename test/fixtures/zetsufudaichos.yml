@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keiyaku_id: MyString
+  scsym: MyString
+  sscsym: MyString
+  sscsym2: MyString
+  sscsym3: MyString
+  sscsym4: MyString
+  haisen: 1
+  kiki: MyString
+  kaishuym: MyString
+  biko: MyString
+
+two:
+  keiyaku_id: MyString
+  scsym: MyString
+  sscsym: MyString
+  sscsym2: MyString
+  sscsym3: MyString
+  sscsym4: MyString
+  haisen: 1
+  kiki: MyString
+  kaishuym: MyString
+  biko: MyString

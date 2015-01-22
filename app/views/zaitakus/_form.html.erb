@@ -1,0 +1,21 @@
+<%= form_for(@zaitaku) do |f| %>
+  <% if @zaitaku.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@zaitaku.errors.count, "error") %> prohibited this zaitaku from being saved:</h2>
+
+      <ul>
+      <% @zaitaku.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :atai %><br>
+    <%= f.text_field :atai %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

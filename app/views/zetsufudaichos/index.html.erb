@@ -1,0 +1,43 @@
+<h1>Listing zetsufudaichos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Keiyaku</th>
+      <th>Scsym</th>
+      <th>Sscsym</th>
+      <th>Sscsym2</th>
+      <th>Sscsym3</th>
+      <th>Sscsym4</th>
+      <th>Haisen</th>
+      <th>Kiki</th>
+      <th>Kaishuym</th>
+      <th>Biko</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @zetsufudaichos.each do |zetsufudaicho| %>
+      <tr>
+        <td><%= zetsufudaicho.keiyaku_id %></td>
+        <td><%= zetsufudaicho.scsym %></td>
+        <td><%= zetsufudaicho.sscsym %></td>
+        <td><%= zetsufudaicho.sscsym2 %></td>
+        <td><%= zetsufudaicho.sscsym3 %></td>
+        <td><%= zetsufudaicho.sscsym4 %></td>
+        <td><%= zetsufudaicho.haisen %></td>
+        <td><%= zetsufudaicho.kiki %></td>
+        <td><%= zetsufudaicho.kaishuym %></td>
+        <td><%= zetsufudaicho.biko %></td>
+        <td><%= link_to 'Show', zetsufudaicho %></td>
+        <td><%= link_to 'Edit', edit_zetsufudaicho_path(zetsufudaicho) %></td>
+        <td><%= link_to 'Destroy', zetsufudaicho, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Zetsufudaicho', new_zetsufudaicho_path %>

@@ -1,0 +1,25 @@
+<h1>Listing riyu_monshins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Atai</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @riyu_monshins.each do |riyu_monshin| %>
+      <tr>
+        <td><%= riyu_monshin.atai %></td>
+        <td><%= link_to 'Show', riyu_monshin %></td>
+        <td><%= link_to 'Edit', edit_riyu_monshin_path(riyu_monshin) %></td>
+        <td><%= link_to 'Destroy', riyu_monshin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Riyu monshin', new_riyu_monshin_path %>

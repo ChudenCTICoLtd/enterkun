@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap
+ *= require bootstrap-datetimepicker
+ *= require cerulean/loader
+ *= require cerulean/bootswatch
+ *= require_self
+ */
+
+	
+	
+#map img {
+  max-width: none;
+}
+#map label {
+  width: auto; display:inline;
+}
+
+/*通常時*/
+
+body {
+  padding-top:60px;
+  margin-bottom: 30px;
+}
+
+/*ブラウザの横幅が980px以下のとき*/
+@media (max-width: 980px) {
+  /* Remove any padding from the body */
+  body {
+    padding-top: 0;
+	margin-bottom: 30px;
+  }      
+}
+
+.footer {
+  position: absolute;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+
+}
+
+body > .container {
+  padding: 30px 15px 0;
+}
+.container .text-muted {
+  margin: 5px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+/*googlemapをレスポンシブルに*/
+.map_wrapper {
+max-width: 640px;
+min-width: 280px;
+margin: 20px auto;
+padding: 4px;
+border: 1px solid #CCC;
+}
+ 
+.googlemap {
+position: relative;
+padding-bottom: 56.25%;
+height: 0;
+overflow: hidden;
+ width: 100% !important;
+height: 100% !important;
+
+}
+.gmap_div {
+ width: 100%;
+height: 100%;
+
+}
+#gmaps4rails_map {
+  width: 70px;
+  height: 400px;
+}
+div.map_container_renamed #map {
+  width: 420px;
+  height: 260px;
+}
+
+div.map_container_renamed {
+  padding: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc #ccc #999 #ccc;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+  width: 420px;
+}
+

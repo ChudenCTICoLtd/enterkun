@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jisshi_flag: false
+  mijisshi_riyu: MyString
+  mononifurebiribiri_umumi: MyString
+  zoukaichiku_umumi: MyString
+
+two:
+  jisshi_flag: false
+  mijisshi_riyu: MyString
+  mononifurebiribiri_umumi: MyString
+  zoukaichiku_umumi: MyString

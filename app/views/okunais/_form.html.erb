@@ -1,0 +1,43 @@
+<%= form_for(@okunai) do |f| %>
+  <% if @okunai.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@okunai.errors.count, "error") %> prohibited this okunai from being saved:</h2>
+
+      <ul>
+      <% @okunai.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "屋内点検実施有無" %><br>
+    <% @jisshiumus = JyoutaiUmu.all %>  
+    <% for @jisshiumu in @jisshiumus %>
+    <label><%= f.radio_button :jisshi_umu, @jisshiumu.id %><%= @jisshiumu.atai %></label>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label "屋内点検未実施理由" %><br>
+	<%= f.collection_select :mijisshi_riyu, RiyuMonshin.all, :id, :atai %>
+  </div>
+  <div class="field">
+    <%= f.label "分電盤破損有無" %><br>
+    <% @bundenbanhasons = JyoutaiUmu.all %>  
+    <% for @bundenbanhason in @bundenbanhasons %>
+    <label><%= f.radio_button :bundenbanhason_umu, @bundenbanhason.id %><%= @bundenbanhason.atai %></label>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label "充電部露出有無" %><br>
+    <% @juudenburosyutsus = JyoutaiUmu.all %>  
+    <% for @juudenburosyutsu in @juudenburosyutsus %>
+    <label><%= f.radio_button :juudenburosyutsu_umu, @juudenburosyutsu.id %><%= @juudenburosyutsu.atai %></label>
+    <% end %>
+	
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

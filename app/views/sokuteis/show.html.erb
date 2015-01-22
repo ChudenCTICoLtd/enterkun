@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>回路数</strong>
+  <%= @sokutei.kairo_su %>
+</p>
+
+<p>
+  <strong>漏洩電流一括値</strong>
+  <%= @sokutei.roueidenryu_ikkatsu %>mA
+</p>
+
+<p>
+  <strong>絶縁抵抗一括値</strong>
+  <%= @sokutei.zetsuenteikou_ikkatsu %>MΩ
+</p>
+
+<%= link_to 'Edit', edit_sokutei_path(@sokutei) %> |
+<%= link_to 'Back', sokuteis_path %>

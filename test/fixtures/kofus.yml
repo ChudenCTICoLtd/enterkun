@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  okyaku_code: MyString
+  chosa_kubn: MyString
+  kanriku_code: MyString
+  hashira_bango: MyString
+  okyaku_name: MyString
+  keiyakushubetsu_code: MyString
+  torikigai_code: MyString
+  namecode: MyString
+  shugo_code: MyString
+  kofushubetsu_code: MyString
+
+two:
+  okyaku_code: MyString
+  chosa_kubn: MyString
+  kanriku_code: MyString
+  hashira_bango: MyString
+  okyaku_name: MyString
+  keiyakushubetsu_code: MyString
+  torikigai_code: MyString
+  namecode: MyString
+  shugo_code: MyString
+  kofushubetsu_code: MyString

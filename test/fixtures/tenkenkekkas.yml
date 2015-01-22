@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chosakekka_code: MyString
+  chosajisseki_code: MyString
+  houmon_id: 1
+  monshin_kekka_id: 1
+  okugai_kekka_id: 1
+  okunai_kekka_id: 1
+  sokuteichi_kekka_id: 1
+
+two:
+  chosakekka_code: MyString
+  chosajisseki_code: MyString
+  houmon_id: 1
+  monshin_kekka_id: 1
+  okugai_kekka_id: 1
+  okunai_kekka_id: 1
+  sokuteichi_kekka_id: 1

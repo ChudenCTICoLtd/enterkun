@@ -1,0 +1,25 @@
+<%= form_for(@chosajisseki_code) do |f| %>
+  <% if @chosajisseki_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chosajisseki_code.errors.count, "error") %> prohibited this chosajisseki_code from being saved:</h2>
+
+      <ul>
+      <% @chosajisseki_code.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :atai %><br>
+    <%= f.text_field :atai %>
+  </div>
+  <div class="field">
+    <%= f.label :kigou %><br>
+    <%= f.text_field :kigou %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

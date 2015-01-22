@@ -1,0 +1,32 @@
+<h1>訪問履歴</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>訪問日</th>
+      <th>訪問回数</th>
+      <th>天気</th>
+      <th>在宅状態</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houmons.each do |houmon| %>
+      <tr>
+        <td><%= houmon.houmon_ymd %></td>
+        <td><%= houmon.houmon_su %></td>
+		<% if @houmon.tenko.nil? then %>
+		<td>-</td>
+		<%else%>
+        <td><%= houmon.tenko.atai %></td>
+        <% end %>
+		<% if @houmon.zaitakufuzai.nil? then %>
+		<td>-</td>
+		<%else%>
+        <td><%= houmon.zaitakufuzai.atai %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
