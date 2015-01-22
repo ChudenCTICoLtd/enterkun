@@ -4,37 +4,37 @@
 </div>
 
 <a class="btn" data-toggle="modal" href="#show_info" role="button">
-   <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span> お客さま基本情報</button>
+   <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span> 設備基本情報</button>
 </a>
 
 <div id="show_info" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">お客さま基本情報</h4>
+        <h4 class="modal-title">設備基本情報</h4>
       </div>
       <div class="modal-body">
         <p><dl class="dl-horizontal">  
   
-  <dt><strong>交付種別</strong></dt>
+  <dt><strong>訪問種類</strong></dt>
   <dd><strong><%= @kofu.kofushubetsu_code %></strong></dd>
-  <dt><strong>調査員名</strong></dt>
+  <dt><strong>担当者名</strong></dt>
   <dd><strong><%= @kofu.chosain.name %></strong></dd>
-  <dt><strong>管理区</strong></dt>
+  <dt><strong>管轄エリア</strong></dt>
   <dd><strong><%= @kofu.keiyaku.kanriku_code %></strong></dd>
-  <dt><strong>柱番号</strong></dt>
+  <dt><strong>訪問番号</strong></dt>
   <dd><strong><%= @kofu.keiyaku.hashira_bango %></strong></dd>
-  <dt><strong>お客さま番号</strong></dt>
+  <dt><strong>お客さま設備番号</strong></dt>
   <dd><strong><%= @kofu.keiyaku.okyaku_code %></strong></dd>
-  <dt><strong>お客さま名</strong></dt>
+  <dt><strong>管理者名</strong></dt>
   <dd><strong><%= @kofu.keiyaku.okyaku_name %></strong></dd>
   <dt><strong>契約種別</strong></dt>
   <dd><strong><%= @kofu.keiyaku.keiyakushubetsu_code %></strong></dd>
-  <dt><strong>灯力街</strong></dt>
+  <dt><strong>設備区分</strong></dt>
   <dd><strong><%= @kofu.keiyaku.torikigai_code %></strong></dd>
   <dt><strong>調査種類</strong></dt>
   <dd><strong><%= @kofu.chosasyurui_code %></strong></dd>
-  <dt><strong>集合住宅コード</strong></dt>
+  <dt><strong>一括訪問コード</strong></dt>
   <dd><strong><%= @kofu.shugo_code %></strong></dd>
   
   
@@ -53,10 +53,10 @@
 	  <th><strong>訪問年月日</strong></th>
 	  <th><strong>訪問回数</strong></th>
 	  <th><strong>天候</strong></th>
-	  <th><strong>在宅状態</strong></th>
-	  <th><strong>調査結果</strong></th>
+	  <th><strong>立会状態</strong></th>
+	  <th><strong>結果</strong></th>
 	  <th><strong>現場写真</strong></th>
-	  <th><strong>調査実績</strong></th>
+	  <th><strong>実績</strong></th>
 	  
 
     <% @houmons.each do |houmon| %>

@@ -38,7 +38,7 @@
 		  <%= f.text_field :keiyaku_okyaku_code_cont %>
 		</div>
 		<div class="form-group">
-		  <%= f.label :keiyaku_okyaku_name_cont, 'お客さま名（設備管理者名）',:class => "col-sm-3 control-label" %>
+		  <%= f.label :keiyaku_okyaku_name_cont, '管理者名',:class => "col-sm-3 control-label" %>
 		  <%= f.text_field :keiyaku_okyaku_name_cont %>
   
 		 </div>
@@ -60,13 +60,13 @@
 <table class="table table-condensed">
   <thead>
     <tr>
-	  <th>交種別</th>
+	  <th>訪問種類</th>
 	  <th>管轄エリア</th>
 	  <th>訪番</th>
 	  <th>客番</th>
 	  <th>客名</th>
 	  <th>施設区分</th>
-	  <th>実績</th>
+	  <th>最新実績</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -89,7 +89,7 @@
         <td>
 			
 		  <%= link_to '開始',kofu_path(kofu), :class => 'btn btn-primary btn-sm' %>
-		  <%= link_to '訪歴',show_one_path(kofu), :class => 'btn btn-primary btn-sm' %>
+		  <%= link_to '履歴',show_one_path(kofu), :class => 'btn btn-primary btn-sm' %>
 		  
         </td>
       </tr>

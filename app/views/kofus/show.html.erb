@@ -49,19 +49,19 @@
   <h3>メンテナンス開始</h3>
 </div>
 <a class="btn" data-toggle="modal" href="#show_info" role="button">
-   <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-info-sign"></span> 基本情報</button>
+   <button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-info-sign"></span> 設備基本情報</button>
 </a>
 
 <div id="show_info" class="modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">基本情報</h4>
+        <h4 class="modal-title">設備基本情報</h4>
       </div>
       <div class="modal-body">
         <p><dl class="dl-horizontal">  
   
-  <dt><strong>交付種別</strong></dt>
+  <dt><strong>訪問種別</strong></dt>
   <dd><strong><%= @kofu.kofushubetsu_code %></strong></dd>
   <dt><strong>担当者名</strong></dt>
   <dd><strong><%= @kofu.chosain.name %></strong></dd>
@@ -71,7 +71,7 @@
   <dd><strong><%= @kofu.keiyaku.hashira_bango %></strong></dd>
   <dt><strong>お客さま設備番号</strong></dt>
   <dd><strong><%= @kofu.keiyaku.okyaku_code %></strong></dd>
-  <dt><strong>お客さま名（設備管理者名）</strong></dt>
+  <dt><strong>管理者名</strong></dt>
   <dd><strong><%= @kofu.keiyaku.okyaku_name %></strong></dd>
   <dt><strong>契約種別</strong></dt>
   <dd><strong><%= @kofu.keiyaku.keiyakushubetsu_code %></strong></dd>
@@ -155,7 +155,7 @@
 	
     </div>
     <div class="field">
-    <%= f_houmon.label "在宅状態" %><br>
+    <%= f_houmon.label "立会状態" %><br>
     <% @zaitakus = Zaitaku.all %>  
     <% for @zaitaku in @zaitakus %>
     <label><%= f_houmon.radio_button :zaitaku_jotai, @zaitaku.id, :checked=> true %><%= @zaitaku.atai %></label>
@@ -190,14 +190,14 @@
 	<%= f_monshin.collection_select :mijisshi_riyu, RiyuMonshin.all, :id, :atai ,:include_blank => true %>
     </div>
 	<div class="field">
-	<%= f_monshin.label "物に触れてビリビリするところがある" %><br>
+	<%= f_monshin.label "異音がするところがある" %><br>
 	<% @mononifurebiribiris = JyoutaiUmumijisshi.all %>  
 	<% for @mononifurebiribiri in @mononifurebiribiris %>
 	<label><%= f_monshin.radio_button :mononifurebiribiri_umumi, @mononifurebiribiri.id %><%= @mononifurebiribiri.atai %></label>
 	<% end %>
 	</div>
 	<div class="field">
-	<%= f_monshin.label "増改築を行った" %><br>
+	<%= f_monshin.label "追加機器設置を行った" %><br>
 	<% @zokaichikus = JyoutaiUmumijisshi.all %>  
 	<% for @zokaichiku in @zokaichikus %>
 	<label><%= f_monshin.radio_button :zoukaichiku_umumi, @zokaichiku.id %><%= @zokaichiku.atai %></label>
@@ -209,14 +209,14 @@
   <div class="tab-pane fade" id="okugai">
     <%= f_tenkenkekka.fields_for :okugai do |f_okugai| %>
     <div class="field">
-	<%= f_okugai.label "取付部絶縁良否" %><br>
+	<%= f_okugai.label "さび発生良否" %><br>
 	<% @toritsukes = JyoutaiUmufukanou.all %>  
 	<% for @toritsuke in @toritsukes %>
 	<label><%= f_okugai.radio_button :toritsukezetsuen_ryohifuno, @toritsuke.id %><%= @toritsuke.atai %></label>
 	<% end %>
 	</div>
 	<div class="field">
-	<%= f_okugai.label "他物との離隔良否" %><br>
+	<%= f_okugai.label "建物への設置良否" %><br>
 	<% @tabutsurikakus = JyoutaiUmufukanou.all %>  
 	<% for @tabutsurikaku in @tabutsurikakus %>
 	<label><%= f_okugai.radio_button :tabutsurikaku_ryohifuno, @tabutsurikaku.id %><%= @tabutsurikaku.atai %></label>
@@ -239,14 +239,14 @@
 	<%= f_okunai.collection_select :mijisshi_riyu, RiyuOkunai.all, :id, :atai ,:include_blank => true %>
 	</div>
 	<div class="field">
-	<%= f_okunai.label "分電盤破損有無" %><br>
+	<%= f_okunai.label "機器破損有無" %><br>
 	<% @bundenbanhasons = JyoutaiUmu.all %>  
 	<% for @bundenbanhason in @bundenbanhasons %>
 	<label><%= f_okunai.radio_button :bundenbanhason_umu, @bundenbanhason.id %><%= @bundenbanhason.atai %></label>
 	<% end %>
 	</div>
 	<div class="field">
-	<%= f_okunai.label "充電部露出有無" %><br>
+	<%= f_okunai.label "耐用年数超過有無" %><br>
 	<% @juudenburosyutsus = JyoutaiUmu.all %>  
 	<% for @juudenburosyutsu in @juudenburosyutsus %>
 	<label><%= f_okunai.radio_button :juudenburosyutsu_umu, @juudenburosyutsu.id %><%= @juudenburosyutsu.atai %></label>
@@ -258,16 +258,16 @@
   <div class="tab-pane fade" id="sokutei">
 	<%= f_tenkenkekka.fields_for :sokutei do |f_sokutei| %>
     <div class="field">
-	<%= f_sokutei.label "回路数" %><br>
+	<%= f_sokutei.label "測定箇所数" %><br>
 	<%= f_sokutei.number_field :kairo_su ,in: 1..99, step: 1 %>
 	</div>
 	<div class="field">
-	<%= f_sokutei.label "漏洩電流一括値" %><br>
-	<%= f_sokutei.number_field :roueidenryu_ikkatsu,in: 0.00..20.00, step: 0.01 %>mA
+	<%= f_sokutei.label "測定器A指示値" %><br>
+	<%= f_sokutei.number_field :roueidenryu_ikkatsu,in: 0.00..20.00, step: 0.01 %>mV
 	</div>
 	<div class="field">
-	<%= f_sokutei.label "絶縁抵抗一括値" %><br>
-	<%= f_sokutei.number_field :zetsuenteikou_ikkatsu,in: 0.00..20.00, step: 0.01  %>MΩ
+	<%= f_sokutei.label "測定器B指示値" %><br>
+	<%= f_sokutei.number_field :zetsuenteikou_ikkatsu,in: 0.00..20.00, step: 0.01  %>MHz
 	</div>
     <% end %>
  
